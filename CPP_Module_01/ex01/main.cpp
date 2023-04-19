@@ -4,19 +4,17 @@ int main(){
     int N;
     std::string name;
 
-    std::cout << "How many create Zombies >"
+    std::cout << "How many zombies would you create >" << std::endl;
     std::cin >> N;
     std::cin.ignore();
-    std::cout << "Input Zombie name >"
+    std::cout << "Please write zombie's name >" << std::endl;
     std::getline(std::cin, name);
-    if (cin.bad() || cin.fail() || cin.eof()){
+    if (std::cin.bad() || std::cin.fail() || std::cin.eof()){
         std::cout << "Error: cin" << std::endl;
         exit(1);
     }
 
-    Zombie* zombie = new zombieHorde(N, name);
-    for (int i = 0; i < N; i++){
-
-    }
-
+    Zombie* zombies = zombieHorde(N, name);
+    delete[] zombies;
+    return 0;
 }

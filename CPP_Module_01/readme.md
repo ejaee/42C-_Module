@@ -96,6 +96,57 @@ int main()
 ## Exercise 01: Exercise 01: Moar brainz!
 
 ***학습 포인트***
-- ㅇ
+- 객체 배열
 
-### 
+### c++의 객체 배열
+
+- 기본적인 배열 선언 및 초기화 방법
+
+```cpp
+int arr[] = {1, 2, 3};
+int arr[3]; // 초기화 되지 않고 쓰레기값을 가리킨다
+int arr[3] = {1, 2, 3};
+
+Point pointArr[] = {Point(), Point(), Point()};
+Point pointArr[3]; // 초기화 된다
+Point pointArr[3] = {Point(), Point(), Point()};
+```
+객체 배열은 무조건(?) 선언과 함께 default constructor가 호출되면서 초기화된다
+
+- 객체 배열이 초기화 되는 원리
+
+```cpp
+Point pointArr[3];
+```
+선언과 함께 default constructor가 호출된다
+
+```cpp
+Point *p1 = new Point[3];
+```
+동적으로 객체 배열을 선언하는 경우에도 default constructor을 이용해 모두 초기화된다
+
+`Point형 객체`에 대한 `3`개를 사용할 수 있는 메모리 공간을 `동적으로 확보`하고
+
+각 공간에 `default constructor`로 객체를 생성한다
+
+이후 `첫 번째 객체의 주소`를 p1 pointer에 `저장`한다는 뜻
+
+- 객체의 포인터 배열이 선언되는 원리
+
+배열을 동적으로 할당하고 그 안에 정적으로 생성하는 객체를 담는 것이 아니라,
+
+배열은 정적이되 객체를 동적으로 할당하면?
+
+```cpp
+Point *parr[3]; // 아무 객체도 생성되지 않는다. 배열만 선언
+
+for(int i = 0; i < 5; i++){
+    parr[i] = new Point(i * 10, i * 10);
+}
+```
+
+- 각 생성자마다 하나의 인자를 전달할 수 있다
+
+```cpp
+Point parr[5]{10, 20, 30}; -> Point(10), Point(20), Point(30), Point(), Point()
+```
