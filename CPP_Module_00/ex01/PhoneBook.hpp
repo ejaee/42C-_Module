@@ -1,5 +1,5 @@
-#ifndef PHONEBOOK_H
-# define PHONEBOOK_H
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
 # define MAX_STORAGE_SPACE 8
 
