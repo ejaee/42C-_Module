@@ -150,3 +150,76 @@ for(int i = 0; i < 5; i++){
 ```cpp
 Point parr[5]{10, 20, 30}; -> Point(10), Point(20), Point(30), Point(), Point()
 ```
+
+
+## Exercise 03: Unnecessary violence
+
+***학습 포인트***
+- const 위치
+
+
+## Exercise 04: Sed is for losers
+
+***학습 포인트***
+- 파일 읽기
+- 파일 쓰기
+
+### 파일 읽기
+
+```cpp
+#include <iostream>
+#include <fstream>
+
+int main(int ac, char **av) {
+    std::string line;
+
+    std::ifstream file("a.txt");
+    if (file.is_open()) {
+        while (std::getline(file, line)) {
+            std::cout << line << std::endl;
+        }
+        file.close();
+    } else {
+        std::cout << "Unable to open file";
+        return 1;
+    }
+    return 0;
+}
+ 
+```
+
+- fstream 헤더
+- ifstream 이름(파일경로);
+- 이름.is_open()
+    열렸다면 true
+
+    그렇지 않다면 false
+
+- getline(이름, string) 열었던 텍스트 파일을 한 줄씩 읽어와 string 형태로 저장
+
+- 이름.close(); 로 닫기
+
+### 파일 쓰기
+
+```cpp
+#include <iostream>
+#include <fstream>
+
+int main(int ac, char **av) {
+    std::string line;
+    
+    std::ofstream file("b.txt");
+    if (file.is_open()) {
+        file << "This is the first line.\n";
+        file << "This is the second line.\n";
+        file.close();
+    } else {
+        std::cout << "Unable to open file";
+        return 1;
+    }
+    return 0;
+}
+```
+
+- fstream 헤더
+- ofstream 이름(파일경로);
