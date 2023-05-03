@@ -17,7 +17,8 @@ class Harl {
     public:
         Harl();
         ~Harl();
-        void    complain(const std::string level);
+        void    complain(const std::string inputLevel);
+        int    findIndex(const std::string leven);
 
 };
 
