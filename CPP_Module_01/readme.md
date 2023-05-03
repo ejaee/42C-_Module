@@ -225,3 +225,49 @@ int main(int ac, char **av) {
 
 - fstream 헤더
 - ofstream 이름(파일경로);
+
+### 파일 읽기 간 주의사항
+
+```c++
+try {
+        validateInput(ac, av);
+        FileDto fileDto(av[1]);
+
+        // while (!fileDto.getFin().eof() && fileDto.getFout().good()) { // 파일이 비어있을 때 한번 돈다
+        while (std::getline(fileDto.getFin(), buf) && fileDto.getFout().good()) {
+            fileDto.replaceString(buf, av[2], av[3]);
+        }     
+        return 0;
+    }   catch (const std::string message) {
+        std::cerr << "Error: " << message << std::endl;
+        return 1;
+    }
+```
+
+`std::ifstream 클래스의 eof()`
+
+-> 파일의 끝을 나타내는 flag 값을 반환
+
+- 파일이 끝나는 경우 true
+- 파일이 끝나지 않았을 경우 false
+
+`!fileDto.getFin().eof()`는 마지막 줄에서만 true를 반환하므로
+
+파일이 비었을 경우에도 한 번은 false를 반환하게 된다
+
+따라서 위 주석대로 실행할 경우 while문이 한번 돌게 된다
+
+예상치 못한 동작이 발생할 수 있으므로 주의하자
+
+
+
+## Exercise 05: Harl 2.0
+
+***학습 포인트***
+- 메서드의 포인터 배열
+
+
+## Exercise 06: Harl filter
+
+***학습 포인트***
+- 메서드의 포인터 배열

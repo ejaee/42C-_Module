@@ -7,20 +7,18 @@
 class FileDto {
 
     private:
-        std::ifstream m_fin;
-        std::ofstream m_fout;
+        std::ifstream	m_fin;
+        std::ofstream	m_fout;
 
     public:
         FileDto();
-        FileDto(std::string fileName);
+        FileDto(const std::string	fileName);
         ~FileDto();
 
-        std::ifstream   &getFin();
-        std::ofstream   &getFout();
-        void    isValidFile();
+        std::ifstream&	getFin();
+        std::ofstream&	getFout();
         
-        void    replaceString(std::string line, std::string s1, std::string s2);
-        
+        void	replaceString(std::string buf, const std::string& s1, const std::string& s2);
 };
 
 #endif
