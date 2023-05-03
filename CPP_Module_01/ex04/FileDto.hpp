@@ -15,8 +15,8 @@ class FileDto {
         FileDto(std::string fileName);
         ~FileDto();
 
-        std::ifstream getFin();
-        std::ofstream getFou();
+        std::ifstream   &getFin();
+        std::ofstream   &getFout();
         void    isValidFile();
         
         void    replaceString(std::string line, std::string s1, std::string s2);

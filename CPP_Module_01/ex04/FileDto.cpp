@@ -23,11 +23,11 @@ FileDto::FileDto(std::string fileName) {
 
 }
 
-std::ifstream   FileDto::getFin(){
+std::ifstream   &FileDto::getFin(){
     return m_fin;
 }
 
-std::ofstream   FileDto::getFout(){
+std::ofstream   &FileDto::getFout(){
     return m_fout;
 }
 
