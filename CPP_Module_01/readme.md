@@ -157,6 +157,8 @@ Point parr[5]{10, 20, 30}; -> Point(10), Point(20), Point(30), Point(), Point()
 ***학습 포인트***
 - const 위치
 
+https://m.blog.naver.com/oh-mms/222044543049
+
 
 ## Exercise 04: Sed is for losers
 
