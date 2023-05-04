@@ -1,8 +1,306 @@
 # CPP_Module_02
 
-## Exercise 00: 
+_New rules_
 
-***í•™ìŠµ í¬ì¸íŠ¸***
-- 
+From now on, all your classes must be designed in the `Orthodox Canonical Form`, unless explicitely stated otherwise. Then, they will implement the four required member functions below:
 
-### 
+canonicalÀÌ¶õ, "±ÔÁ¤´ë·Î"ÇÏ´Â ÇÁ·Î±×·¡¹ÖÀ» ÀÇ¹ÌÇÏ¸ç,
+
+¸»±×´ë·Î Å¬·¡½º¸¦ »ç¿ëÇÒ¶§ Orthodox canonical ±ÔÄ¢µéÀ» µû¸£´Â°ÍÀÌ´Ù.
+
+- µðÆúÆ® »ý¼ºÀÚ(Default constructor)
+- º¹»ç »ý¼ºÀÚ(Copy constructor)
+- ÇÒ´ç ¿¬»êÀÚ ¿À¹ö·Îµù(Copy assignment operator)
+- ¼Ò¸êÀÚ(Destructor)
+
+### µðÆúÆ® »ý¼ºÀÚ
+
+¾î¶°ÇÑ »ý¼ºÀÚµµ Á¤ÀÇµÇÁö ¾Ê¾ÒÀ» ¶§ »ý¼ºµÈ´Ù
+
+```cpp
+class a {
+    a(){};
+}
+```
+
+### º¹»ç »ý¼ºÀÚ
+
+´Ù¸¥ °´Ã¼ÀÇ °ªÀ» º¹»çÇØ¼­ ÃÊ±âÈ­ÇÏ´Âµ¥ »ç¿ëÇÏ´Â »ý¼ºÀÚÀÌ´Ù
+
+```cpp
+T(const T& a);
+```
+´Ù¸¥ T ÀÇ °´Ã¼ a ¸¦ »ó¼ö ·¹ÆÛ·±½º·Î ¹Þ´Â´Ù
+
+a °¡ const ÀÌ±â ¶§¹®¿¡ º¹»ç »ý¼ºÀÚ ³»ºÎ¿¡¼­ a ÀÇ µ¥ÀÌÅÍ¸¦ `º¯°æÇÒ ¼ö ¾ø°í`, 
+
+¿ÀÁ÷ »õ·Ó°Ô ÃÊ±âÈ­ µÇ´Â ÀÎ½ºÅÏ½º º¯¼öµé¿¡°Ô `º¹»ç` ¸¸ ÇÒ ¼ö ÀÖ´Ù
+
+```cpp
+Photon_Cannon::Photon_Cannon(const Photon_Cannon& pc) {
+
+  std::cout << "º¹»ç »ý¼ºÀÚ È£Ãâ !" << std::endl;
+  hp = pc.hp;
+  shield = pc.shield;
+  coord_x = pc.coord_x;
+  coord_y = pc.coord_y;
+  damage = pc.damage;
+
+}
+
+int main() {
+    Photon_Cannon pc1(3, 3);
+    Photon_Cannon pc2(pc1);
+
+
+    //¾Æ·¡ÀÇ ¿¹½Ã´Â ¼­·Î ´Ù¸£´Ù
+    Photon_Cannon pc3 = pc2; // º¹»ç »ý¼ºÀÚ( ´Â ¿ÀÁ÷ »ý¼º ½Ã¿¡ È£ÃâµÈ´Ù )
+
+    Photon_Cannon pc3;      // ±âº» »ý¼ºÀÚ
+    pc3 = pc2;
+}
+```
+
+±»ÀÌ ¸í½ÃÇÏÁö ¾Ê¾Æµµ »ç½ÇÀº µðÆúÆ® »ý¼ºÀÚÃ³·³ µðÆúÆ® º¹»ç »ý¼ºÀÚµµ Áö¿øÇÑ´Ù
+
+»ý¼ºÀÚ¿¡ `new` ¸¦ ÅëÇÑ `µ¿Àû ÇÒ´ç ÃÊ±âÈ­` °¡ ÀÖÀ» °æ¿ì,
+
+±âº» º¹»ç »ý¼ºÀÚ´Â ÇÑ°è¸¦ °¡Áø´Ù
+
+¸¸¾à ¸Å°³º¯¼ö·Î ¹ÞÀº ÀÌ¸§À» µ¿ÀûÇÒ´çÇÏ¿© Å¬·¡½ºÀÇ ¸â¹öº¯¼ö¿¡ ÃÊ±âÈ­ÇÑ´Ù¸é
+
+º¹»ç »ý¼ºÀÚÀÇ °æ¿ì ´Ü¼øÈ÷ `name = ref.name` ·Î Àü´ÞµÇ¹Ç·Î
+
+ÇÏ³ªÀÇ ¸Þ¸ð¸®¸¦ µÎ Å¬·¡½º°¡ °øÀ¯ÇÏ°Ô µÈ´Ù
+
+ÀÌ·± °æ¿ì ¸Þ¸ð¸®°¡ ÇÏ³ªÀÓ¿¡µµ ºÒ±¸ÇÏ°í ¼Ò¸êÀÚ°¡ È£ÃâµÇ¸é¼­ delect µÉ ¶§
+
+Å¬·¡½º°¡ µÎ °³ÀÌ¹Ç·Î µÎ¹øÀÇ delect°¡ È£ÃâµÇ¸é¼­ ¿À·ù°¡ ¹ß»ýÇÑ´Ù
+
+µû¶ó¼­ ÀÌ¸¦ °í·ÁÇÑ `¾èÀº º¹»ç`, `±íÀº º¹»ç` °³³äÀ» ¾Ë¾Æ¾ß ÇÑ´Ù
+
+- ¾èÀº º¹»ç( Shallow Copy )
+    °´Ã¼¸¦ º¹»çÇÒ ¶§ `ÇØ´ç °´Ã¼¸¸ º¹»ç(´ëÀÔ)`ÇÏ¿© »õ °´Ã¼¸¦ »ý¼º
+
+    º¹»çµÈ °´Ã¼ÀÇ ÀÎ½ºÅÏ½º º¯¼ö´Â `¿øº» °´Ã¼ÀÇ ÀÎ½ºÅÏ½º º¯¼ö¿Í °°Àº ¸Þ¸ð¸® ÁÖ¼Ò¸¦ ÂüÁ¶`
+
+    ÇØ´ç ¸Þ¸ð¸® ÁÖ¼ÒÀÇ °ªÀÌ º¯°æµÇ¸é ¿øº» °´Ã¼, º¹»ç °´Ã¼ÀÇ ÀÎ½ºÅÏ½º º¯¼ö `°ªÀÌ ÇÔ²² º¯°æ`µÊ
+
+- ±íÀº º¹»ç( Deep Copy )
+
+    °´Ã¼¸¦ º¹»çÇÒ ¶§ ÇØ´ç °´Ã¼¿Í ÀÎ½ºÅÏ½º º¯¼ö±îÁö ¸ðµÎ º¹»ç
+
+    ÀüºÎ¸¦ º¹»çÇÏ¿© `»õ °´Ã¼¿¡ ´ãÀ½`
+
+    `ÂüÁ¶¸¦ °øÀ¯ÇÏÁö ¾ÊÀ¸¸ç`, ±âÁ¸ÀÇ º¹»çÇÑ ÀÎ½ºÅÏ½º¿Í `´Ù¸¥ ¸Þ¸ð¸® °ø°£¿¡ ÇÒ´ç`µÇ¾î µ¶¸³Àû
+
+```cpp
+int main (){
+	int *a = new int(5);
+    int *b = new int(3);
+    
+    a = b; //¾èÀº º¹»ç(ÂüÁ¶¸¸ º¹»ç)
+    *a = *b; // ±íÀº º¹»ç(°ªÀ» º¹»ç)
+}
+```
+
+### ÇÒ´ç¿¬»êÀÚ ¿À¹ö·Îµù
+
+¿À¹ö·Îµù(overloading) ÇÑ´Ù == ±âº» ¿¬»êÀÚµéÀ» Á÷Á¢ »ç¿ëÀÚ°¡ Á¤ÀÇÇÏ´Â °Í
+
+```cpp
+( ¸®ÅÏ Å¸ÀÔ ) operator( ¿¬»êÀÚ ) ( ¿¬»êÀÚ°¡ ¹Þ´Â ÀÎÀÚ )
+```
+
+- ´ëÀÔ ¿¬»êÀÚ ÇÔ¼ö
+
+```cpp
+Complex& operator=(const Complex& c);
+```
+
+´ëÀÔ ¿¬»êÀÚ ÇÔ¼ö´Â ÀÚ±â ÀÚ½ÅÀ» °¡¸®Å°´Â ·¹ÆÛ·±½º¸¦ ¸®ÅÏÇÑ´Ù
+
+±× ÀÌÀ¯´Â
+
+```cpp
+a = b = c;
+```
+
+¿¡¼­ b = c;´Â b¸¦ ¸®ÅÏÇØ¾ßÇÏ±â ¶§¹®ÀÌ´Ù
+
+ÀÌ ¶§ Complex Å¸ÀÔÀ» ¸®ÅÏÇÏÁö ¾Ê°í ±»ÀÌ Complex& Å¸ÀÔÀ» ¸®ÅÏÇÏ³Ä¸é, 
+
+´ëÀÔ ¿¬»ê ÀÌÈÄ¿¡ ºÒÇÊ¿äÇÑ º¹»ç¸¦ ¹æÁöÇÏ±â À§ÇØ¼­´Ù
+
+```cpp
+Complex& Complex::operator=(const Complex& c)
+
+{
+  real = c.real;
+  img = c.img;
+  return *this;
+}
+```
+
+- ±âº» = ¿¬»êÀÚ
+
+´ëÀÔ ¿¬»êÀÚµµ ±âº»ÀûÀ¸·Î Áö¿øÇÑ´Ù
+
+º¹»ç »ý¼ºÀÚ¸¦ ´Ù·ê ¶§ µðÆúÆ® º¹»ç »ý¼ºÀÚ°¡ ÀÖ¾ú´ø °Í°ú ÀÏ¸Æ»óÅë
+
+```cpp
+    int main(){
+	test s1("hi");
+   	test s2;
+    
+    s2 = s1; // ÁÖ¼Ò°¡ Àü´Þ
+
+    //¾Æ·¡ÀÇ ¿¹½Ã´Â ¼­·Î ´Ù¸£´Ù
+    Some_Class a = b;  // ¨ç a ÀÇ 'º¹»ç »ý¼ºÀÚ' °¡ È£Ãâ
+
+    Some_Class a;  // ¨è ±âº» »ý¼ºÀÚ°¡ È£Ãâ µÈ ÈÄ 
+    a = b;         // ´ëÀÔ ¿¬»êÀÚ ÇÔ¼ö°¡ ½ÇÇà
+}
+```
+
+¼±¾ð ÈÄ ´ëÀÔ, ±âº»ÀûÀ¸·Î `¾èÀº º¹»ç`°¡ ÀÏ¾î³­´Ù
+
+- ÇÒ´ç ¿¬»êÀÚ ¿À¹ö·Îµå
+
+```cpp
+class test{
+	test& operator=(const test &s1){
+    	strData = s1.strdata;
+        len = s1.len;
+        return *this;
+    }
+}
+```
+
+
+## Exercise 00: My First Class in Orthodox Canonical Form 
+
+***ÇÐ½À Æ÷ÀÎÆ®***
+- ±âº» »ý¼ºÀÚ, º¹»ç »ý¼ºÀÚ, ´ëÀÔ ¿¬»êÀÚ, °¢°¢ÀÇ ¸â¹ö ÇÔ¼öµé, ¼Ò¸êÀÚ °³³ä¿¡ ´ëÇÑ ÀÌÇØ
+
+***¿ä±¸ »çÇ× Á¤¸®***
+C++Àº °íÁ¤¼Ò¼öÁ¡À» °®°í ÀÖÁö ¾ÊÀ¸¹Ç·Î, Á÷Á¢ ¸¸µé¾î º¸ÀÚ.
+
+Canonical Form ÁöÄÑ¶ó
+
+Fixed ¶ó´Â Å¬·¡½º¸¦ Á¤ÀÇÇÏ¶ó
+
+¸â¹ö º¯¼ö/¸â¹ö ÇÔ¼öµéÀº ´ÙÀ½°ú °°´Ù
+
+- private members
+    fixed point °ªÀÌ ÀúÀåµÉ Á¤¼öÇü º¯¼ö
+    Ç×»ó 8ÀÇ °ªÀ» °¡Áö´Â fractional bits°¡ ÀúÀåµÉ static Á¤¼öÇü »ó¼ö.
+
+- public members
+    fixed point °ªÀ» 0À¸·Î ÃÊ±âÈ­½ÃÅ°´Â ±âº» »ý»óÀÚ
+
+    ¼Ò¸êÀÚ
+
+    º¹»ç »ý¼ºÀÚ
+
+    ´ëÀÔ ¿¬»êÀÚ ¿À¹ö·Îµù (assignation operator overload)
+
+    getRawBits : raq value°ªÀ» ´Ü¼øÈ÷ ¹ÝÈ¯ÇÏ´Â ÇÔ¼ö (const)
+
+    setRawBits : raw value°ªÀ» º¯°æÇÏ´Â ÇÔ¼ö
+
+ÁÖ¾îÁø main ¹®À» ÄÄÆÄÀÏÇßÀ» ¶§ µ¿ÀÏÇÑ °á°ú°¡ ³ª¿Àµµ·Ï ±¸ÇöÇÏ¶ó
+
+---
+
+### Fixed point numbers °íÁ¤¼Ò¼öÁ¡ 
+
+ÄÄÇ»ÅÍ¿¡¼­ ½Ç¼ö¸¦ Ç¥ÇöÇÏ´Â ¹æ½ÄÀ¸·Î `°íÁ¤¼Ò¼öÁ¡`°ú `ºÎµ¿¼Ò¼öÁ¡`ÀÌ ÀÖ´Ù
+
+ÄÄÇ»ÅÍ°¡ ¼ö¸¦ ¾î¶»°Ô Ç¥ÇöÇÏ´Â°¡?
+
+ÄÄÇ»ÅÍ´Â 0°ú 1·Î ÀÌ·ç¾îÁø ±â°è¾î¸¦ »ç¿ëÇÏ°í ÀÎ°£ÀÌ »ç¿ëÇÏ´Â 10Áø¼ö¸¦ 2Áø¼ö·Î ¹Ù²ã ÀúÀåÇÑ´Ù´Â »ç½ÇÀ» ¾Ë°í ÀÖ´Ù
+
+Áï 10Áø¼ö Á¤¼ö¸¦ 2Áø¼ö·Î ¹Ù²Ù¾î ÀúÀåÇÑ´Ù
+
+±×·¸´Ù¸é `½Ç¼ö`, Áï ¼Ò¼öÁ¡ÀÌ ºÙ¾îÀÖ´Â ¼ö´Â ¾î¶»°Ô `2Áø¼ö·Î º¯È¯`ÇÒ±î?
+
+Á¤¼öºÎ´Â Á¤¼ö º¯È¯ÇÏ´Â ¹æ¹ý°ú µ¿ÀÏÇÏ´Ù
+
+¼Ò¼öºÎ°¡ ¹®Á¦ÀÎµ¥, Á¤¼ö º¯È¯°ú µ¿ÀÏÇÑ ¹æ¹ýÀ¸·Î º¯È¯ÇÏ¸é ¼­·Î ´Ù¸¥ 10Áø¼ö ¼ýÀÚ°¡ 2Áø¼ö·Î º¯È¯µÇ¾úÀ» ¶§ ÀÌ¿Í Áßº¹µÉ ¼ö ÀÖ´Ù
+
+1.9 -> 1.1001
+1.41 -> 1.100 1
+
+Á¤¼öºÎ º¯È¯ÀÇ Á¤¹Ý´ë·Î ÁøÇàµÈ´Ù
+
+Á¤¼öºÎ¿¡¼­´Â 10Áø¼ö¸¦ 2·Î ³ª´²°¡¸é¼­ 1ÀÌ³ª 0À» »Ì¾Ò´Ù¸é
+
+¼Ò¼öºÎ´Â 10Áø¼ö¿¡ 2¸¦ °öÇØ°¡¸é¼­ 1ÀÌ³ª 0À» »Ì¾Æ³½´Ù
+
+Á¤¼öºÎ º¯È¯¶§´Â 1ÀÌ ³ª¿À¸é Á¾·áÇß´Ù¸é 
+
+¼Ò¼öºÎ´Â 0ÀÌ ³ª¿À¸é Á¾·áÇÏ°í °á°ú¸¦ ¹Ø¿¡¼­ºÎÅÍ°¡ ¾Æ´Ï¶ó À§¿¡¼­ºÎÅÍ ÀÐ¾îÁØ´Ù
+
+```vim
+# 0.625 ÀÌÁø¼ö º¯È¯
+
+0.625 * 2 = 1.25 -> 1À» »©³»°í ³ª¸ÓÁö 0.25
+0.25 * 2 = 0.5 -> 0À» »©³»°í ³ª¸ÓÁö 0.5
+0.5 * 2 = 1.0 -> 1À» »©³»°í ³ª¸ÓÁö 0
+
+0.625 -> 0.101
+```
+
+0ÀÌ ³ª¿ÔÀ¸´Ï º¯È¯À» Á¾·áÇÏ°í »©³½ ¼ýÀÚµéÀ» À§¿¡¼­ºÎÅÍ ÀÐ¾îÁÖ¸é µÈ´Ù
+
+- `°íÁ¤¼Ò¼öÁ¡`
+
+À§¿¡¼­ ¼³¸íÇÑ ¹æ¹ý´ë·Î 10Áø¼ö¸¦ 2Áø¼ö·Î ¹Ù²åÀ¸¸é, ±×°É ±×´ë·Î ³Ö´Â ¹æ½ÄÀÌ´Ù
+
+7.625¶ó´Â ¼ýÀÚ¸¦ 2Áø¼ö·Î º¯È¯ÇÏ¸é 111.101 ÀÌ´Ù
+
+ÀÌ¸¦ ¸Þ¸ð¸®¿¡ ÀúÀåÇÒ¶§¸¦ »ý°¢ÇØº¸ÀÚ
+
+![»çÁø](./png/exp1.png)
+
+16ºñÆ® Ã¼°è¸¦ ¾´´Ù°í °¡Á¤ÇßÀ» ‹š,
+
+¸Ç ¾Õ 1ÀÚ¸®´Â ºÎÈ£ ºñÆ® ( Sign Bit ) ¶ó°í ÇØ¼­ `0ÀÌ¸é ¾ç¼ö`, `1ÀÌ¸é À½¼ö`¶ó´Â ¶æÀÌ´Ù
+
+³ª¸ÓÁö ºñÆ®µéÀº ¼Ò¼öÁ¡À» ±âÁØÀ¸·Î Á¤¼öºÎ¶û ¼Ò¼öºÎ¸¦ Ç¥ÇöÇÏ´Â ºñÆ®·Î °¢°¢ ³ª´©°Ô µÇ´Âµ¥,
+
+¼Ò¼öÁ¡ÀÇ À§Ä¡´Â ¹Ì¸® Á¤ÇØµÐ´Ù
+
+¼Ò¼öºÎÀÇ °æ¿ì ¾Õ¿¡¼­ºÎÅÍ Ã¤¿ì¸ç ³²´Â µÞÀÚ¸®´Â ´Ù 0À¸·Î Ã¤¿î´Ù
+
+ÀÌ·¯ÇÑ °íÁ¤¼Ò¼öÁ¡ ¹æ½ÄÀº ±¸ÇöÇÏ±â Æí¸®ÇÏÁö¸¸ 
+
+»ç¿ëÇÏ´Â ºñÆ® ¼ö ´ëºñ Ç¥Çö °¡´ÉÇÑ ¼öÀÇ ¹üÀ§ ¶Ç´Â Á¤¹Ðµµ°¡ ³·±â ¶§¹®¿¡ 
+
+½Ç¼ö¸¦ ´Ù·ê ÇÊ¿ä°¡ ÀÖ´Â ¹ü¿ë ½Ã½ºÅÛ¿¡¼­´Â °ÅÀÇ ¾È ¾²ÀÌ°í, 
+
+³ôÀº Á¤¹Ðµµ°¡ ÇÊ¿ä¾ø´Â ¼Ò±Ô¸ð ½Ã½ºÅÛ¿¡¼­´Â °£È¤ ¾²ÀÌ±âµµ ÇÑ´Ù°í ÇÑ´Ù
+
+- `ºÎµ¿¼Ò¼öÁ¡`
+
+ºÎµ¿¼Ò¼öÁ¡ Ç¥Çö ¹æ½ÄÀº ±×´ë·Î ³ÖÁö ¾Ê°í ¸î°¡Áö °úÁ¤À» Ãß°¡ÇÑ´Ù
+
+Á¤¼öºÎ¿¡ 1¸¸ ³²À» ¶§±îÁö ¼Ò¼öÁ¡À» ¿ÞÂÊ( Á¤¼öºÎ°¡ 0ÀÏ °æ¿ì¿£ ¿À¸¥ÂÊ )À¸·Î ÀÌµ¿½ÃÅ°°í 
+
+ÀÌµ¿ÇÑ Ä­ ¼ö¸¸Å­ n ÀÚ¸®¿¡ Áý¾î³ÖÀ¸¸é µÈ´Ù
+
+¿¹¸¦ µé¾î  111.101À» Á¤±ÔÈ­ÇÏ¸é 1.11101 * 2^2 °¡ µÈ´Ù
+
+ºÎµ¿ ÀÌ¶ó´Â ¸»ÀÌ ¸¶Ä¡ ¿òÁ÷ÀÌÁö ¾Ê´Â´Ù´Â ¶æ °°Áö¸¸
+
+ºÎµ¿Àº ¼Ò¼öÁ¡À» `ÀÌµ¿` ½ÃÅ²´Ù´Âµ¥¿¡¼­ floating point ¶ó´Â ¿ë¾î°¡ ³ª¿Â °Í °°´Ù
+
+[ÃâÃ³: ÄÄÇ»ÅÍ¿¡¼­ÀÇ ½Ç¼ö Ç¥Çö: °íÁ¤¼Ò¼öÁ¡ vs ºÎµ¿¼Ò¼öÁ¡](https://gsmesie692.tistory.com/94)
+
+## Exercise 01: Towards a more useful fixed-point number class
+
+***ÇÐ½À Æ÷ÀÎÆ®***
+- ±âº» »ý¼ºÀÚ, º¹»ç »ý¼ºÀÚ, ´ëÀÔ ¿¬»êÀÚ, °¢°¢ÀÇ ¸â¹ö ÇÔ¼öµé, ¼Ò¸êÀÚ °³³ä¿¡ ´ëÇÑ ÀÌÇØ
+
+***¿ä±¸ »çÇ× Á¤¸®***
