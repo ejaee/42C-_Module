@@ -28,7 +28,7 @@ Fixed&  Fixed::operator=(const Fixed& fixed) {
 }
 
 std::ostream& operator<<(std::ostream& ofs, const Fixed& fixed) {
-  return ofs << fixed.toFloat();
+    return ofs << fixed.toFloat();
 }
 
 Fixed::~Fixed() {
