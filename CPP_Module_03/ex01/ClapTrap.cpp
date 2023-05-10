@@ -1,7 +1,7 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap() {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "ClapTrap Default constructor called" << std::endl;
 
     m_name = "Default";
     m_hitPoints = 10;
@@ -19,7 +19,7 @@ ClapTrap::ClapTrap(std::string name) {
 }
 
 ClapTrap::ClapTrap(const ClapTrap& clapTrap) {
-    std::cout << "Copy constructor called" << std::endl;
+    std::cout << "ClapTrap Copy constructor called" << std::endl;
 
     m_name = clapTrap.getName();
     m_hitPoints = clapTrap.getHitPoints();
@@ -28,7 +28,7 @@ ClapTrap::ClapTrap(const ClapTrap& clapTrap) {
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& clapTrap) {
-    std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << "ClapTrap Copy assignment operator called" << std::endl;
 
     if (this != &clapTrap) {
         m_name = clapTrap.getName();

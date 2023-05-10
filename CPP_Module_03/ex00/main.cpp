@@ -14,6 +14,7 @@ int main() {
     std::cout << "------------------------------------" << std::endl;
 
     clapTrapB.attack(nameA);
+    clapTrapA.takeDamage(5);
     clapTrapB.attack(nameA);
     clapTrapA.takeDamage(10);
     std::cout << "------------------------------------" << std::endl;
