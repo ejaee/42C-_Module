@@ -6,12 +6,18 @@
 /*   By: ejachoi <ejachoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:33:16 by ejachoi           #+#    #+#             */
-/*   Updated: 2023/05/04 15:33:17 by ejachoi          ###   ########.fr       */
+/*   Updated: 2023/05/12 16:05:31 by ejachoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HARL_HPP
 # define HARL_HPP
+
+# define RED    "\033[0;31m"
+# define GREEN  "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE   "\033[0;34m"
+# define RESET  "\033[0m"
 
 # include <iostream>
 
