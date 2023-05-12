@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejachoi <ejachoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: choiejae <choiejae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:32:06 by ejachoi           #+#    #+#             */
-/*   Updated: 2023/05/04 15:32:07 by ejachoi          ###   ########.fr       */
+/*   Updated: 2023/05/12 11:22:50 by choiejae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 Zombie *newZombie(std::string name){
-    return new Zombie(name);
+    return new Zombie(RED + name + RESET);
 }

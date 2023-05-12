@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejachoi <ejachoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: choiejae <choiejae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:32:24 by ejachoi           #+#    #+#             */
-/*   Updated: 2023/05/04 15:32:25 by ejachoi          ###   ########.fr       */
+/*   Updated: 2023/05/12 11:36:55 by choiejae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Zombie::Zombie(){}
 
 Zombie::~Zombie(){
-    std::cout << m_name << " is dead..." << std::endl;
+    std::cout << m_name << RED << ": is dead..." << RESET << std::endl;
 }
 
 void    Zombie::setName(std::string name){
@@ -23,5 +23,5 @@ void    Zombie::setName(std::string name){
 }
 
 void    Zombie::announce(){
-    std::cout << m_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+    std::cout << m_name << YELLOW << ": BraiiiiiiinnnzzzZ..." << RESET << std::endl;
 }

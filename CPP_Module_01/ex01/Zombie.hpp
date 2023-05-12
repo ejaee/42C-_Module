@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejachoi <ejachoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: choiejae <choiejae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:32:26 by ejachoi           #+#    #+#             */
-/*   Updated: 2023/05/04 15:32:27 by ejachoi          ###   ########.fr       */
+/*   Updated: 2023/05/12 11:27:09 by choiejae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
+
+# define RED    "\033[0;31m"
+# define GREEN  "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE   "\033[0;34m"
+# define RESET  "\033[0m"
 
 # include <iostream>
 
