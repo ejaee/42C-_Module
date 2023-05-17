@@ -1,7 +1,7 @@
 #include "Fixed.hpp"
 
 Fixed::Fixed() {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << GREEN << "Default constructor called" << RESET << std::endl;
     fixedPointNumber = 0;
 }
 
@@ -16,12 +16,12 @@ Fixed::Fixed(const float num) {
 }
 
 Fixed::Fixed(const Fixed& fixed) {
-    std::cout << "Copy constructor called" << std::endl;
+    std::cout << BLUE << "Copy constructor called" << RESET << std::endl;
     *this = fixed;
 }
 
 Fixed&  Fixed::operator=(const Fixed& fixed) {
-    std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << YELLOW << "Copy assignment operator called" << RESET << std::endl;
     if (this != &fixed)
         this->fixedPointNumber = fixed.getRawBits();
     return *this;
@@ -32,7 +32,7 @@ std::ostream& operator<<(std::ostream& ofs, const Fixed& fixed) {
 }
 
 Fixed::~Fixed() {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << RED << "Destructor called" << RESET << std::endl;
 }
 
 int Fixed::getRawBits() const {
