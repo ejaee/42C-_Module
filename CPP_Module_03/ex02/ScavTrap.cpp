@@ -10,8 +10,9 @@ ScavTrap::ScavTrap() : ClapTrap() {
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-    std::cout << "\033[0;34mScavTrap [ " << name << " ] has been created\033[0m" << std::endl;
+    std::cout << BLUE << "ScavTrap [ " << name << " ] has been created" << RESET << std::endl;
 
+    m_name = name;
     this->m_hitPoints = 100;
     this->m_energyPoints = 50;
     this->m_attackDamage = 20;

@@ -10,7 +10,7 @@ ClapTrap::ClapTrap() {
 }
 
 ClapTrap::ClapTrap(std::string name) {
-    std::cout << "\033[0;32mClapTrap [ " << name << " ] has been created\033[0m" << std::endl;
+    std::cout << GREEN << "ClapTrap [ " << name << " ] has been created" << RESET << std::endl;
 
     m_name = name;
     m_hitPoints = 10;
@@ -40,7 +40,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& clapTrap) {
 }
 
 ClapTrap::~ClapTrap() {
-    std::cout << "\033[0;31mClapTrap [ " << m_name << " ] is destructed\033[0m" << std::endl;
+    std::cout << RED << "ClapTrap [ " << m_name << " ] is destructed" << RESET << std::endl;
 }
 
 std::string ClapTrap::getName() const {
@@ -62,11 +62,11 @@ unsigned int    ClapTrap::getAttackDamage() const {
 void    ClapTrap::attack(const std::string& target) {
     if (m_energyPoints == 0) {
         std::cout << "[ " << m_name << " ] can no longer repair it" << std::endl;
-        std::cout << "\033[0;31m[ Energy Points : " << m_energyPoints << " ]\033[0m" << std::endl;
+        std::cout << RED << "[ Energy Points : " << m_energyPoints << " ]" << RESET << std::endl;
         return ;
     }
     else if (m_hitPoints == 0) {
-        std::cout << "[ " << m_name << " ] 's Hit Points is 0" << "\033[0;32m [ Energy Points : " << m_energyPoints << " ]\033[0m" << std::endl;
+        std::cout << "[ " << m_name << " ] 's Hit Points is 0" << GREEN << " [ Energy Points : " << m_energyPoints << " ]" << RESET << std::endl;
         return ;
     }
     std::cout   << "ClapTrap [ " << m_name 
@@ -78,13 +78,13 @@ void    ClapTrap::attack(const std::string& target) {
 
 void    ClapTrap::takeDamage(unsigned int amount) {
     if (m_hitPoints <= 0) {
-        std::cout << "[ " << m_name << " ] \033[0;31m's already dead\033[0m"<< std::endl;
+        std::cout << "[ " << m_name << " ] " << RED << "'s already dead" << RESET << std::endl;
         return ;
     }
-    std::cout << "\033[0;33m[ " << m_name << " ] is be damaged as much as " << amount << "\033[0m" << std::endl;
+    std::cout << YELLOW << "[ " << m_name << " ] is be damaged as much as " << amount << RESET << std::endl;
     
     if (m_hitPoints < amount) {
-        std::cout << "[ " << m_name << " ]'s Hit Points is 0" << "\033[0;32m [ Energy Points : " << m_energyPoints << " ]\033[0m" << std::endl;
+        std::cout << "[ " << m_name << " ]'s Hit Points is 0" << GREEN << " [ Energy Points : " << m_energyPoints << " ]" << RESET << std::endl;
         m_hitPoints = 0;
     }
     else m_hitPoints -= amount;
@@ -92,12 +92,12 @@ void    ClapTrap::takeDamage(unsigned int amount) {
 
 void    ClapTrap::beRepaired(unsigned int amount) {
     if (m_energyPoints == 0) {
-        std::cout << "[ " << m_name << " ] can no longer repair it " << "\033[0;31m[ Energy Points : " << m_energyPoints << " ]\033[0m" << std::endl;
+        std::cout << "[ " << m_name << " ] can no longer repair it " << RED << "[ Energy Points : " << m_energyPoints << " ]" << RESET << std::endl;
         return ;
     }
 
-    std::cout << "ClapTrap [ " << m_name << " ] be repaired \033[0;34m[ " << m_hitPoints;
+    std::cout << "ClapTrap [ " << m_name << " ] be repaired " << BLUE << "[ " << m_hitPoints;
     m_hitPoints += amount;
-    std::cout << " -> " << m_hitPoints << " ]\033[0m" << std::endl;
+    std::cout << " -> " << m_hitPoints << " ]" << RESET << std::endl;
     m_energyPoints--;
 }

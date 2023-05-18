@@ -7,12 +7,13 @@ int main() {
     std::cout << "------------------------------------" << std::endl;
 
     FragTrap fragTrapA(nameA);
+    std::cout << "------------------------------------" << std::endl;
     FragTrap fragTrapB(nameB);
     std::cout << "------------------------------------" << std::endl;
-
     ClapTrap ClapTrapC(nameC);
-    std::cout << "------------------------------------" << std::endl;
+    std::cout << "------------------------------------\n" << std::endl;
     
+    std::cout << "------------------------------------" << std::endl;
     fragTrapA.beRepaired(20);
     std::cout << "------------------------------------" << std::endl;
 
@@ -35,6 +36,6 @@ int main() {
     fragTrapA.highFivesGuys();
     fragTrapB.highFivesGuys();
     fragTrapB.highFivesGuys();
-    std::cout << "------------------------------------" << std::endl;
+    std::cout << "------------------------------------\n" << std::endl;
 
 }

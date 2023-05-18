@@ -4,7 +4,6 @@ int main() {
     std::string nameA("marine");
     std::string nameB("zergling");
 
-
     std::cout << "------------------------------------" << std::endl;
     ClapTrap clapTrapA(nameA);
     ClapTrap clapTrapB(nameB);
