@@ -1,6 +1,12 @@
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
+# define RED    "\033[0;31m"
+# define GREEN  "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE   "\033[0;34m"
+# define RESET  "\033[0m"
+
 # include <iostream>
 
 class ClapTrap {
@@ -24,10 +30,11 @@ class ClapTrap {
 		unsigned int	getEnergyPoints() const;
 		unsigned int	getAttackDamage() const;
 
-		void	attack(const std::string& target);
+		virtual void	attack(const std::string& target);
 		void	takeDamage(unsigned int	amount);
 		void	beRepaired(unsigned int	amount);
 
+		void whoAmI(void);
 };
 
 #endif

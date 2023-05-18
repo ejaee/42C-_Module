@@ -10,7 +10,7 @@ ClapTrap::ClapTrap() {
 }
 
 ClapTrap::ClapTrap(std::string name) {
-    std::cout << "\033[0;33mClapTrap [ " << name << " ] has been created\033[0m" << std::endl;
+    std::cout << "\033[0;32mClapTrap [ " << name << " ] has been created\033[0m" << std::endl;
 
     m_name = name;
     m_hitPoints = 10;
@@ -40,7 +40,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& clapTrap) {
 }
 
 ClapTrap::~ClapTrap() {
-    std::cout << "\033[0;33mClapTrap [ " << m_name << " ] is destructed\033[0m" << std::endl;
+    std::cout << "\033[0;31mClapTrap [ " << m_name << " ] is destructed\033[0m" << std::endl;
 }
 
 std::string ClapTrap::getName() const {

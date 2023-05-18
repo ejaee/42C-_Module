@@ -38,7 +38,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& scavTrap) {
 }
 
 ScavTrap::~ScavTrap(){
-    std::cout << "\033[0;34mScavTrap [ " << m_name << " ] is destructed\033[0m" << std::endl;
+    std::cout << "ScavTrap [ " << m_name << " ] is destructed" << std::endl;
 }
 
 void    ScavTrap::attack(const std::string& target) {

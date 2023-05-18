@@ -1,16 +1,19 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap() : ClapTrap("Default_clap_name"){
-    std::cout << "DiamondTrap Default constructor called" << std::endl;
+    std::cout << BLUE << "DiamondTrap Default constructor called" << RESET << std::endl;
 
     m_name = "Default";
+    // m_energyPoints = ScavTrap::getEnergyPoints();
+    m_energyPoints = 50;
 }
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name") {
-    std::cout << "\033[0;34mDiamondTrap [ " << name << " ] has been created\033[0m" << std::endl;
+    std::cout << BLUE << "DiamondTrap [ " << name << " ] has been created" << RESET << std::endl;
 
     m_name = name;
-
+    // m_energyPoints = ScavTrap::getEnergyPoints();
+    m_energyPoints = 50;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& diamondTrap) {
@@ -35,5 +38,10 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& diamondTrap) {
 }
 
 DiamondTrap::~DiamondTrap(){
-    std::cout << "\033[0;34mDiamondTrap [ " << m_name << " ] is destructed\033[0m" << std::endl;
+    std::cout << BLUE << "DiamondTrap [ " << m_name << " ] is destructed" << RESET << std::endl;
+}
+
+void DiamondTrap::whoAmI(void) {
+  std::cout << "My name is " << m_name << "." << std::endl;
+  std::cout << "My ClapTrap name is " << ClapTrap::getName() << "." << std::endl;
 }

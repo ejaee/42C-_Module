@@ -10,7 +10,7 @@ SRCS		= ClapTrap.cpp \
 
 OBJS		= $(SRCS:.cpp=.o)
 
-all			= $(NAME)
+all			: $(NAME)
 
 $(NAME) : $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)

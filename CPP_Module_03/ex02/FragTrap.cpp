@@ -5,8 +5,8 @@ FragTrap::FragTrap() : ClapTrap() {
 
     this->m_name = "Default";
     this->m_hitPoints = 100;
-    this->m_energyPoints = 50;
-    this->m_attackDamage = 20;
+    this->m_energyPoints = 100;
+    this->m_attackDamage = 30;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
@@ -14,8 +14,8 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 
     m_name = name;
     this->m_hitPoints = 100;
-    this->m_energyPoints = 50;
-    this->m_attackDamage = 20;
+    this->m_energyPoints = 100;
+    this->m_attackDamage = 30;
 }
 
 FragTrap::FragTrap(const FragTrap& fragTrap) {
@@ -62,12 +62,12 @@ void    FragTrap::attack(const std::string& target) {
 
 void    FragTrap::highFivesGuys() {
     if (m_energyPoints == 0) {
-        std::cout << "[ " << m_name << " ] can no longer repair it" << std::endl;
+        std::cout << "FragTrap [ " << m_name << " ] can no longer repair it" << std::endl;
         std::cout << "\033[0;31m[ Energy Points : " << m_energyPoints << " ]\033[0m" << std::endl;
         return ;
     }
     else if (m_hitPoints == 0) {
-        std::cout << "[ " << m_name << " ] 's Hit Points is 0" << "\033[0;32m [ Energy Points : " << m_energyPoints << " ]\033[0m" << std::endl;
+        std::cout << "FragTrap [ " << m_name << " ]'s Hit Points is 0" << "\033[0;32m [ Energy Points : " << m_energyPoints << " ]\033[0m" << std::endl;
         return ;
     }
     std::cout   << "FragTrap [ " << m_name << " ] high five!" << "\033[0;32m [ Energy Points : " << m_energyPoints << " ]\033[0m" << std::endl;
