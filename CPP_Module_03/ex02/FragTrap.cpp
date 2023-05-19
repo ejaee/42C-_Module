@@ -43,23 +43,6 @@ FragTrap::~FragTrap(){
     std::cout << "\033[0;34mFragTrap [ " << m_name << " ] is destructed\033[0m" << std::endl;
 }
 
-void    FragTrap::attack(const std::string& target) {
-    if (m_energyPoints == 0) {
-        std::cout << "[ " << m_name << " ] can no longer repair it" << std::endl;
-        std::cout << "\033[0;31m[ Energy Points : " << m_energyPoints << " ]\033[0m" << std::endl;
-        return ;
-    }
-    else if (m_hitPoints == 0) {
-        std::cout << "[ " << m_name << " ] 's Hit Points is 0" << "\033[0;32m [ Energy Points : " << m_energyPoints << " ]\033[0m" << std::endl;
-        return ;
-    }
-    std::cout   << "FragTrap [ " << m_name 
-                << " ] attack [ "<< target
-                << " ], causing " << m_attackDamage 
-                << " points of damage!" << std::endl;
-    m_energyPoints--;
-}
-
 void    FragTrap::highFivesGuys() {
     if (m_energyPoints == 0) {
         std::cout << "FragTrap [ " << m_name << " ] can no longer repair it" << std::endl;
