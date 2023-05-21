@@ -1,35 +1,35 @@
-#include "Dog.hpp"
+#include "Cat.hpp"
 
 /* ================= Orthodox Canonical Class Form ================= */
 
-Dog::Dog() : Animal() {
-    m_type = "Dog";
+Cat::Cat() : Animal() {
+    m_type = "Cat";
     std::cout << BLUE << "[ " << m_type << " ] " << RESET
                 << GREEN << "Default constructed" << RESET << std::endl;   
 }
 
-Dog::Dog(const Dog& dog) {
-    m_type = dog.getType();
+Cat::Cat(const Cat& cat) {
+    m_type = cat.getType();
     std::cout << BLUE << "[ " << m_type << " ] " << RESET
                 << "Copy constructed" << std::endl;   
 }
 
-Dog&    Dog::operator=(const Dog& dog) {
-    if (this != &dog)
-        m_type = dog.getType();
+Cat&    Cat::operator=(const Cat& cat) {
+    if (this != &cat)
+        m_type = cat.getType();
     std::cout << BLUE << "[ " << m_type << " ] " << RESET
                 << "Assigned" << std::endl;
     return *this;
 }
 
-Dog::~Dog() {
+Cat::~Cat() {
     std::cout << BLUE << "[ " << m_type << " ] " << RESET
                 << RED << "Destructed" << RESET << std::endl;   
 }
 
 /* ================================================================= */
 
-void    Dog::makeSound() const{
+void    Cat::makeSound() const{
     std::cout << BLUE << "[ " << m_type << " ] " << RESET
-                << YELLOW << "Woof! Woof" << RESET << std::endl;
+                << YELLOW << "meow! meow!" << RESET << std::endl;
 }
