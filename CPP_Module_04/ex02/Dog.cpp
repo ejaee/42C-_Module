@@ -10,11 +10,12 @@ Dog::Dog() : Animal() {
                 << GREEN << "Default constructed" << RESET << std::endl;   
 }
 
-Dog::Dog(const Dog& dog) {
+Dog::Dog(const Dog& dog) : Animal() {
     m_type = dog.getType();
+    m_brain = new Brain(*dog.getBrain());
 
     std::cout << BLUE << "[ " << m_type << " ] " << RESET
-                << "Copy constructed" << std::endl;   
+                << YELLOW <<  "Copy constructed" << RESET << std::endl;
 }
 
 Dog&    Dog::operator=(const Dog& dog) {

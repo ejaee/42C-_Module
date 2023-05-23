@@ -20,7 +20,7 @@ class Animal {
         virtual ~Animal();
 
         std::string    getType() const;
-        virtual void    makeSound() const = 0;
+        virtual void    makeSound() const;
 };
 
 std::ostream& operator<<(std::ostream& o, const Animal& animal);

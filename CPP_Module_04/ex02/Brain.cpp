@@ -14,7 +14,7 @@ Brain::Brain(const Brain& brain) {
     for (int idx = 0; idx < 100; idx++)
         m_ideas[idx] = brain.getIdeas(idx);
     std::cout << BLUE << "[ Brain ] " << RESET
-                << "Copy constructed" << std::endl;
+                << YELLOW <<  "Copy constructed" << RESET << std::endl;
 }
 
 Brain& Brain::operator=(const Brain& brain) {

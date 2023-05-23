@@ -8,7 +8,7 @@ Dog::Dog() : Animal() {
                 << GREEN << "Default constructed" << RESET << std::endl;   
 }
 
-Dog::Dog(const Dog& dog) {
+Dog::Dog(const Dog& dog) : Animal() {
     m_type = dog.getType();
     std::cout << BLUE << "[ " << m_type << " ] " << RESET
                 << "Copy constructed" << std::endl;   

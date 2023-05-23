@@ -68,10 +68,12 @@ void    MateriaSource::learnMateria(AMateria* m) {
                 continue;
             m_slot[idx] = m;
 
-            std::cout << m->getType() << " is learned correctly at index: " << idx << std::endl;
+            std::cout << m->getType() 
+                    << " is learned correctly at index: [" << idx + 1 <<  "/" << AMA_SIZE << "]" << std::endl;
             return ;
         }
-        std::cout << RED << m->getType() << " is full " << std::endl;
+        std::cout << m->getType() 
+                << " not learned correctly. " << RED << "[Out of storage space]" << std::endl;
     }
     else
         std::cout << RED << "The AMateria you want to learn is empty" << RESET << std::endl;

@@ -1,37 +1,32 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 /* ================= Orthodox Canonical Class Form ================= */
 
-Animal::Animal() : m_type("Animal") {
+AAnimal::AAnimal() : m_type("AAnimal") {
     std::cout << "Default constructed" << std::endl;   
 }
 
-Animal::Animal(const Animal& animal) : m_type(animal.getType()) {
+AAnimal::AAnimal(const AAnimal& animal) : m_type(animal.getType()) {
     std::cout << "Copy constructed" << std::endl;   
 }
 
-Animal& Animal::operator=(const Animal& animal) {
+AAnimal& AAnimal::operator=(const AAnimal& animal) {
     if (this != &animal)
         m_type = animal.getType();
     std::cout << "Assigned" << std::endl;
     return *this;
 }
 
-Animal::~Animal() {
+AAnimal::~AAnimal() {
     std::cout << "Destructed" << std::endl;   
 }
 
 /* ================================================================= */
 
-std::string    Animal::getType() const {
+std::string    AAnimal::getType() const {
     return m_type;
 }
 
-void    Animal::makeSound() const {
-    std::cout << "[ " << m_type << " ] " 
-                << "Function is not yet implemented" << std::endl;
-}
-
-std::ostream&   operator<<(std::ostream& o, const Animal& animal) {
+std::ostream&   operator<<(std::ostream& o, const AAnimal& animal) {
     return o << animal.getType();
 }

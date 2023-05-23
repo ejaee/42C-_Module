@@ -8,7 +8,7 @@ Cat::Cat() : Animal() {
                 << GREEN << "Default constructed" << RESET << std::endl;   
 }
 
-Cat::Cat(const Cat& cat) {
+Cat::Cat(const Cat& cat) : Animal() {
     m_type = cat.getType();
     std::cout << BLUE << "[ " << m_type << " ] " << RESET
                 << "Copy constructed" << std::endl;   

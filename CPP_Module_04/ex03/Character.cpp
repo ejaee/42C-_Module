@@ -3,7 +3,7 @@
 /* ================= Orthodox Canonical Class Form ================= */
 
 Character::Character() : m_name("") {
-    std::cout   << GREEN << "[ " << m_name << " ]" << RESET
+    std::cout   << GREEN << "[ " << m_name << " ] " << RESET
                 << "Default constructed" << std::endl;
 
     for (int idx = 0; idx < AMA_SIZE; idx++)
@@ -11,7 +11,7 @@ Character::Character() : m_name("") {
 }
 
 Character::Character(const std::string& name) : m_name(name) {
-    std::cout   << GREEN << "[ " << m_name << " ]" << RESET
+    std::cout   << GREEN << "[ " << m_name << " ] " << RESET
                 << "UserDefined constructed" << std::endl;
 
     for (int idx = 0; idx < AMA_SIZE; idx++)
@@ -21,7 +21,7 @@ Character::Character(const std::string& name) : m_name(name) {
 Character::Character(const Character& c) : m_name(c.getName()) {
     const AMateria* tmp;
 
-    std::cout   << GREEN << "[ " << m_name << " ]" << RESET
+    std::cout   << GREEN << "[ " << m_name << " ] " << RESET
                 << "Copy constructed" << std::endl;
 
     for (int idx = 0; idx < AMA_SIZE; idx++) {
@@ -38,7 +38,7 @@ Character::Character(const Character& c) : m_name(c.getName()) {
 Character& Character::operator=(const Character& c) {
     const AMateria* tmp;
     
-    std::cout   << GREEN << "[ " << m_name << " ]" << RESET
+    std::cout   << GREEN << "[ " << m_name << " ] " << RESET
                 << "Assigned" << std::endl;
 
     if (this != &c) {
@@ -58,7 +58,7 @@ Character& Character::operator=(const Character& c) {
 }
 
 Character::~Character() {
-    std::cout   << GREEN << "[ " << m_name << " ]" << RESET
+    std::cout   << GREEN << "[ " << m_name << " ] " << RESET
                 << "Destructed" << std::endl;   
 
     for (int idx = 0; idx < AMA_SIZE; idx++) {
@@ -80,8 +80,8 @@ const std::string& Character::getName() const {
 }
 
 void    Character::equip(AMateria* m) {
-    std::cout   << GREEN << "[ " << m_name << " ]" << RESET
-                << "* equip func *";
+    std::cout   << GREEN << "[ " << m_name << " ] " << RESET
+                << "* equip func *" << std::endl;
 
     if (m) {
         for (int idx = 0; idx < AMA_SIZE; idx++) {
@@ -89,26 +89,28 @@ void    Character::equip(AMateria* m) {
                 continue;
             m_slot[idx] = m;
 
-            std::cout << m->getType() << " is equipped correctly on " << m_name << std::endl;
+            std::cout   << BLUE << m->getType() << RESET 
+                        << " is equipped correctly on " 
+                        << GREEN << m_name << RESET << std::endl;
             return ;
         }
-        std::cout << RED << m->getType() << " is full " << RESET << std::endl;
+        std::cout << RED << m->getType() << " is full" << RESET << std::endl;
     }
     else
         std::cout << RED << "The AMateria you want to equip is empty" << RESET << std::endl;
 }
 
 void    Character::unequip(int idx) {
-    std::cout   << GREEN << "[ " << m_name << " ]" << RESET
-                << "* unequip func *";
+    std::cout   << GREEN << "[ " << m_name << " ] " << RESET
+                << "* unequip func *" << std::endl;
 
     if (0<= idx && idx < AMA_SIZE && m_slot[idx]) {
         m_slot[idx] = NULL;
         std::cout << m_slot[idx] << " is unequipped correctly on " << m_name << std::endl;
     }
     else
-        std::cout   << GREEN << "[ " << m_name << " ]" << RESET
-                    << "This slot is empty or inaccessible idx";    
+        std::cout   << GREEN << "[ " << m_name << " ] " << RESET
+                    << RED << "This slot is empty or inaccessible idx"<< RESET << std::endl;    
 
 }
 
@@ -116,7 +118,6 @@ void    Character::use(int idx, const ICharacter& target) {
     if (0 <= idx && idx < AMA_SIZE && m_slot[idx])
         m_slot[idx]->use(target);
     else
-        std::cout   << GREEN << "[ " << m_name << " ]" << RESET
-                    << "This slot is empty or inaccessible idx";
+        std::cout   << GREEN << "[ " << m_name << " ] " << RESET
+                    << RED << "This slot is empty or inaccessible idx" << RESET << std::endl;
 }
-

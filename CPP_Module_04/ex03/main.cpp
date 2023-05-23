@@ -5,9 +5,27 @@
 #include "MateriaSource.hpp"
 
 int main() {
+/* ====================================================================*/
+    
+    std::cout << YELLOW << "\nCreate MateriaSource : [Ice], [Cure]\n" << RESET << std::endl;
+
     IMateriaSource* src = new MateriaSource();
+
+    std::cout << std::endl;
+
     src->learnMateria(new Ice());
+    std::cout << std::endl;
     src->learnMateria(new Cure());
+    std::cout << std::endl;
+    src->learnMateria(new Ice());
+    std::cout << std::endl;
+    src->learnMateria(new Cure());
+    std::cout << std::endl;
+    src->learnMateria(new Ice());
+
+/* ====================================================================*/
+    
+    std::cout << YELLOW << "\nCreate User 1: [me]\n" << RESET << std::endl;
 
     ICharacter* me = new Character("me");
     
@@ -16,6 +34,16 @@ int main() {
     me->equip(tmp);
     tmp = src->createMateria("cure");
     me->equip(tmp);
+
+    tmp = src->createMateria("cure");
+
+    me->unequip(1); // valid message
+    me->unequip(2); // invalid message
+
+
+/* ====================================================================*/
+    
+    std::cout << YELLOW << "\nCreate User 2: [bob]\n" << RESET << std::endl;
 
     ICharacter* bob = new Character("bob");
     
@@ -26,4 +54,5 @@ int main() {
     delete src;
     
     return 0;
+/* ====================================================================*/
 }
