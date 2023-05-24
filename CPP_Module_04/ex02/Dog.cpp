@@ -2,7 +2,7 @@
 
 /* ================= Orthodox Canonical Class Form ================= */
 
-Dog::Dog() : Animal() {
+Dog::Dog() : AAnimal() {
     m_type = "Dog";
     m_brain = new Brain();
 
@@ -10,7 +10,7 @@ Dog::Dog() : Animal() {
                 << GREEN << "Default constructed" << RESET << std::endl;   
 }
 
-Dog::Dog(const Dog& dog) : Animal() {
+Dog::Dog(const Dog& dog) : AAnimal() {
     m_type = dog.getType();
     m_brain = new Brain(*dog.getBrain());
 

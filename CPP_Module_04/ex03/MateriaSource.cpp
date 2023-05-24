@@ -74,6 +74,7 @@ void    MateriaSource::learnMateria(AMateria* m) {
         }
         std::cout << m->getType() 
                 << " not learned correctly. " << RED << "[Out of storage space]" << std::endl;
+        delete m;
     }
     else
         std::cout << RED << "The AMateria you want to learn is empty" << RESET << std::endl;

@@ -2,7 +2,7 @@
 
 /* ================= Orthodox Canonical Class Form ================= */
 
-Cat::Cat() : Animal() {
+Cat::Cat() : AAnimal() {
     m_type = "Cat";
     m_brain = new Brain();
     
@@ -10,7 +10,7 @@ Cat::Cat() : Animal() {
                 << GREEN << "Default constructed" << RESET << std::endl;   
 }
 
-Cat::Cat(const Cat& cat) : Animal() {
+Cat::Cat(const Cat& cat) : AAnimal() {
     m_type = cat.getType();
     m_brain = new Brain(*cat.getBrain());
 

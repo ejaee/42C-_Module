@@ -5,9 +5,10 @@ int main() {
 
     std::cout << "\n>>>>>> Case 1: normal Animal! <<<<<<\n" << std::endl;
     {
-        const Animal* a = new Cat();
-        const Animal* b = new Cat();
-        const Dog* c = new Dog();
+        const AAnimal* a = new Cat();	// new for abstract class
+        const AAnimal* b = new Dog();	// new for abstract class
+
+		const Dog* c = new Dog();		// new for getBrain()
 
         a->makeSound();
         b->makeSound();
@@ -22,13 +23,12 @@ int main() {
 
         delete a;
         delete b;
-        delete c;
     }
 
 
 	std::cout << "\n>>>>>> Case 2: Deep Animal! <<<<<<\n" << std::endl;
 	{
-		Animal* animals[4];
+		AAnimal* animals[4];
 		Dog*  dog;
 
 		for (int idx = 0; idx < 4; idx++) {
