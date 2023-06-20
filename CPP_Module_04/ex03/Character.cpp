@@ -105,8 +105,8 @@ void    Character::unequip(int idx) {
                 << "* unequip func *" << std::endl;
 
     if (0<= idx && idx < AMA_SIZE && m_slot[idx]) {
+        std::cout << m_slot[idx]->getType() << " is unequipped correctly on " << m_name << std::endl;
         m_slot[idx] = NULL;
-        std::cout << m_slot[idx] << " is unequipped correctly on " << m_name << std::endl;
     }
     else
         std::cout   << GREEN << "[ " << m_name << " ] " << RESET
