@@ -9,6 +9,8 @@
 # define BLUE   "\033[0;34m"
 # define RESET  "\033[0m"
 
+class Form;
+
 class Bureaucrat {
     private:
         const std::string m_name;
@@ -37,6 +39,6 @@ class Bureaucrat {
 
 };
 
-std::ostream& operator<<(std::ostream& ofs, const Bureaucrat& ref);
+std::ostream& operator<<(std::ostream& ofs, const Bureaucrat& b);
 
 # endif
