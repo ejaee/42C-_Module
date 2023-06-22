@@ -1,5 +1,9 @@
 #include "Intern.hpp"
 
+#define FORM_1 0
+#define FORM_2 24
+#define FORM_3 46
+
 Intern::Intern() {
 
 }
@@ -23,23 +27,24 @@ const char* Intern::FormNotExistException::what() const throw() {
 }
 
 AForm* Intern::makeForm(std::string name, std::string target) {
-    std::string formList("shrubbery creation | robotomy creation | presidential pardon");
+    std::string formList("ShrubberyCreationForm | RobotomyRequestForm | PresidentialPardonForm");
     AForm* result = NULL;
 
     if (name.length() == 0)
         throw Intern::FormNotExistException();
     switch (formList.find(name)) {
-        case 0:
+        case FORM_1:
             result = new ShrubberyCreationForm(target);
             break;
-        case 21:
+        case FORM_2:
             result = new RobotomyRequestForm(target);
             break;
-        case 41:
+        case FORM_3:
             result = new PresidentialPardonForm(target);
             break;
         default:
             throw Intern::FormNotExistException();
     }
+    std::cout << GREEN << "Success! " << name << std::endl << RESET;
     return result;
 }

@@ -91,8 +91,10 @@ void    AForm::checkExecutable(const Bureaucrat& b) const {
 }
 
 std::ostream& operator<<(std::ostream& ofs, const AForm& f) {
-    return ofs  << "Form: " << f.getName() << std::endl
+    return ofs  << BLUE \
+                << "Form: " << f.getName() << std::endl
                 << "BeSign: " << f.getSignStatus() << std::endl
                 << "SignGrade: " << f.getSignGrade() << std::endl
-                << "ExecGrade: " << f.getExecGrade() << std::endl;
+                << "ExecGrade: " << f.getExecGrade() << std::endl 
+                << RESET;
 }

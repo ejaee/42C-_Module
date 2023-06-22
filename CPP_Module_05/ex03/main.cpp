@@ -3,6 +3,10 @@
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
 
+#define FORM_1 "ShrubberyCreationForm"
+#define FORM_2 "RobotomyRequestForm"
+#define FORM_3 "PresidentialPardonForm"
+
 void    leaksChecker() {
     system("leaks ex03");
 }
@@ -19,9 +23,9 @@ int main() {
     try {
         Intern intern;
         // AForm *basic = new ShrubberyCreationForm("tree");
-        AForm* shrubery = intern.makeForm("shrubbery", "intern form");
-        AForm* robotomy = intern.makeForm("robotomy", "intern form");
-        AForm* president = intern.makeForm("president", "intern form");
+        AForm* shrubery = intern.makeForm(FORM_1, "intern form");
+        AForm* robotomy = intern.makeForm(FORM_2, "intern form");
+        AForm* president = intern.makeForm(FORM_3, "intern form");
     
         std::cout << *shrubery << std::endl;
         std::cout << *robotomy << std::endl;
