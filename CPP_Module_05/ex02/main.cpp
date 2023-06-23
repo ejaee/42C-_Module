@@ -48,7 +48,7 @@ int main() {
 
         ceo.signForm(*basic);
         std::cout << BLUE << "\n[After]\n" << RESET;
-        std::cout << BLUE << *basic << RESET;
+        std::cout << BLUE << *basic << std::endl << RESET;
 
         ceo.executeForm(*basic);
 

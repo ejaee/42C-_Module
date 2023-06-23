@@ -40,4 +40,22 @@ int main() {
         std::cout << RED << e.what() << RESET;
     }
 
+    try {
+        Bureaucrat up("up_user", 1);
+        std::cout << up;
+
+    } catch (const std::exception& e) {
+        std::cout << RED << e.what() << RESET;
+    }
+
+    std::cout << std::endl;
+
+    try {
+        Bureaucrat down("down_user", 150);
+        std::cout << down;
+
+    } catch (const std::exception& e) {
+        std::cout << RED << e.what() << RESET;
+    }
+
 }

@@ -1,11 +1,11 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm()
-    : AForm("robotomy", 72, 45), m_target("Unspecified") {
+    : AForm("presidential pardon", 25, 5), m_target("Unspecified") {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
-    : AForm("robotomy", 72, 45), m_target(target) {
+    : AForm("presidential pardon", 25, 5), m_target(target) {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& f)

@@ -3,10 +3,12 @@
 
 # include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form {
     private:
         const std::string   m_name;
-        bool                m_beSigned;
+        bool                m_signStatus;
         const int           m_signGrade;
         const int           m_execGrade;
 
@@ -27,7 +29,7 @@ class Form {
         };
 
         const std::string&  getName() const;
-        const bool&         getBeSigned() const;
+        const bool&         getSignStatus() const;
         const int&          getSignGrade() const;
         const int&          getExecGrade() const;
 

@@ -2,9 +2,10 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
+# include "Form.hpp"
 
 # define RED    "\033[0;31m"
-# define GREEN  "\033[0;32m"
+# define GREEN  "\033[1;32m"
 # define YELLOW "\033[0;33m"
 # define BLUE   "\033[0;34m"
 # define RESET  "\033[0m"
@@ -32,13 +33,15 @@ class Bureaucrat {
                 const char* what() const throw();
         };
 
-        const std::string& getName() const;
-        const int& getGrade() const;
-        void    increaseGrade();
-        void    decreaseGrade();
+        const std::string&  getName() const;
+        const int&          getGrade() const;
+        
+        void                increaseGrade();
+        void                decreaseGrade();
+        void                signForm(Form& f);
 
 };
 
-std::ostream& operator<<(std::ostream& ofs, const Bureaucrat& b);
+std::ostream& operator<<(std::ostream& ofs, const Bureaucrat& ref);
 
 # endif

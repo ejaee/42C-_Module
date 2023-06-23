@@ -2,26 +2,30 @@
 
 int main() {
 
-    std::cout << YELLOW << "\n[ Test 1: basic Constructor ]\n" << RESET;
+    Bureaucrat tester1("CEO", 1);
+    Bureaucrat tester2("Staff", 150);
+
+    std::cout << YELLOW << "\n[ Test 1: CEO tries to sign the basic form ]\n" << RESET;
     try {
         Form basic;
-        std::cout << GREEN << basic << RESET;
+        
+        tester1.signForm(basic);
 
     } catch (const std::exception& e) {
         std::cerr << RED << e.what() << RESET;
     }
     std::cout << YELLOW << "--------------------------------\n" << RESET << std::endl;
 
-    std::cout << YELLOW << "[ Test 2: normal ]\n" << RESET;
+    std::cout << YELLOW << "\n[ Test 2: Staff tries to sign the basic form ]\n" << RESET;
     try {
-        Form normal("normal", 1, 150);
-        std::cout << GREEN << normal << RESET;
+        Form basic;
+        
+        tester2.signForm(basic);
 
     } catch (const std::exception& e) {
         std::cerr << RED << e.what() << RESET;
     }
     std::cout << YELLOW << "--------------------------------\n" << RESET << std::endl;
-
 
     std::cout << YELLOW << "[ Test 3-1: over signGrade ]\n" << RESET;
     try {
@@ -65,16 +69,4 @@ int main() {
         std::cerr << RED << e.what() << RESET;
     }
     std::cout << YELLOW << "--------------------------------\n" << RESET << std::endl;
-
-
-    // std::cout << std::endl;
-
-    // try {
-    //     Bureaucrat under("Under_user", 151);
-    //     std::cout << under;
-
-    // } catch (const std::exception& e) {
-    //     std::cerr << RED << e.what() << RESET;
-    // }
-
 }

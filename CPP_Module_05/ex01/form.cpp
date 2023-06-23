@@ -1,14 +1,14 @@
 #include "Form.hpp"
 
 Form::Form()
-    : m_name("Default"), m_beSigned(false), m_signGrade(70), m_execGrade(70) {
+    : m_name("Default"), m_signStatus(false), m_signGrade(70), m_execGrade(70) {
 
     std::cout << m_name << " Constructor called\n";
 
 }
 
 Form::Form(const std::string& name, const int& signGrade, const int& execGrade)
-    : m_name(name), m_beSigned(false), m_signGrade(signGrade), m_execGrade(execGrade) {
+    : m_name(name), m_signStatus(false), m_signGrade(signGrade), m_execGrade(execGrade) {
 
     if (signGrade < 1 || execGrade < 1) throw Form::GradeTooHighException();
     if (signGrade > 150 || execGrade > 150) throw Form::GradeTooLowException();
@@ -17,7 +17,7 @@ Form::Form(const std::string& name, const int& signGrade, const int& execGrade)
 }
 
 Form::Form(const Form& f)
-    : m_name(f.getName()), m_beSigned(f.getBeSigned()), m_signGrade(f.getSignGrade()), m_execGrade(f.getExecGrade()) {
+    : m_name(f.getName()), m_signStatus(f.getSignStatus()), m_signGrade(f.getSignGrade()), m_execGrade(f.getExecGrade()) {
     
     std::cout << m_name << " Copy Constructor called\n";
 }
@@ -27,7 +27,7 @@ Form& Form::operator=(const Form& f) {
         *(const_cast<std::string*>(&m_name)) = f.getName();
         *(const_cast<int*>(&m_signGrade)) = f.getSignGrade();
         *(const_cast<int*>(&m_execGrade)) = f.getExecGrade();
-        m_beSigned = f.getBeSigned();
+        m_signStatus = f.getSignStatus();
     }
 
     std::cout << f.getName() << " Copy Assignment called\n";
@@ -50,8 +50,8 @@ const std::string& Form::getName() const {
     return m_name;
 }
 
-const bool& Form::getBeSigned() const {
-    return m_beSigned;
+const bool& Form::getSignStatus() const {
+    return m_signStatus;
 }
 
 const int& Form::getSignGrade() const {
@@ -65,15 +65,17 @@ const int& Form::getExecGrade() const {
 void Form::beSigned(const Bureaucrat& b) {
     if (b.getGrade() > m_signGrade)
         throw GradeTooLowException();
-    else if (m_beSigned)
-        std::cout << m_name << " aws already signed\n";
-    else
-        m_beSigned = true;
+    else if (m_signStatus)
+        std::cout << RED << m_name << " was already signed\n" << RESET;
+    else {
+        std::cout << GREEN << m_name << " was signed successfully.\n" << RESET;
+        m_signStatus = true;
+    }
 }
 
 std::ostream& operator<<(std::ostream& ofs, const Form& f) {
     return ofs  << "Form: " << f.getName() << std::endl
-                << "BeSign: " << f.getBeSigned() << std::endl
+                << "BeSign: " << f.getSignStatus() << std::endl
                 << "SignGrade: " << f.getSignGrade() << std::endl
                 << "ExecGrade: " << f.getExecGrade() << std::endl;
 }
