@@ -37,7 +37,7 @@ void    ScalarConverter::convertToChar(std::string input, double inputValue) {
     std::cout << "char: ";
     if (!checkValidValue(input)) {
         std::cout << "impossible\n";
-    } else if (inputValue < 33 || inputValue > 128) {
+    } else if (inputValue < 33 || 128 < inputValue) {
         std::cout << "Non displayable\n";
     } else {
         std::cout << "'" << static_cast<char>(inputValue) << "'\n";

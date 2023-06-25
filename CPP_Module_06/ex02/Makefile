@@ -1,11 +1,12 @@
-NAME		= convert
+NAME		= ex02
 
 CXX			= c++
 
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRCS		=	ScalarConverter.cpp	\
-				main.cpp		\
+SRCS		=	Base.cpp	\
+				Utils.cpp	\
+				main.cpp	\
 
 OBJS		= $(SRCS:.cpp=.o)
 
