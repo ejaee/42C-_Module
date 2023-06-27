@@ -18,7 +18,7 @@ clean:
 	rm -rf $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) ./ex04_testFiles/*.replace
 
 re: fclean all
 
