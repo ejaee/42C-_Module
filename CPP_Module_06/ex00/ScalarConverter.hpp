@@ -20,8 +20,8 @@ class ScalarConverter {
         static bool    checkValidValue(std::string input);
         static void    CheckConvertable(char *pos);
 
-    public:
         ScalarConverter();
+    public:
         ScalarConverter(const ScalarConverter& ref);
         ScalarConverter& operator=(const ScalarConverter& ref);
         ~ScalarConverter();

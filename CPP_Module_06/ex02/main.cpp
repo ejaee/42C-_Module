@@ -2,7 +2,6 @@
 
 int main() {
     srand(time(NULL));
-    
     Base* randomBase1 = generate();
     identify(randomBase1);
     identify(*randomBase1);
@@ -15,7 +14,4 @@ int main() {
     identify(randomBase3);
     identify(*randomBase3);
 
-
-    
-    
 }

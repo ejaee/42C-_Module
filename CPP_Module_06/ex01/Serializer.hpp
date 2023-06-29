@@ -9,9 +9,9 @@ struct Data {
 
 class Serializer {
     private:
+        Serializer();
 
     public: 
-        Serializer();
         Serializer(const Serializer& ref);
         Serializer& operator=(const Serializer& ref);
         ~Serializer();
