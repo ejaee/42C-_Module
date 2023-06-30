@@ -13,21 +13,28 @@
 class Span {
     private:
         std::vector<int> _intVector;
-
         std::vector<int> sortVector() const;
-        int getShortestSpan(std::vector<int> sortedVector);
-    public:
+
         Span();
+        int     getShortestSpan(std::vector<int> sortedVector);
+    public:
         Span(const unsigned int N);
         Span(const Span& ref);
         Span& operator=(const Span& ref);
         ~Span();
 
         void    addNumber(int num);
-        void    addNumbersAsManyAs(int num);
         int     shortestSpan();
         int     longestSpan();
 
+        template<typename T>
+		void    addNumber(typename T::const_iterator begin, typename T::const_iterator end)
+        {
+        	if (std::distance(begin, end) + _intVector.size() > _intVector.capacity())
+		        throw CanNoLongerBeSavedException();
+	        for (; begin != end; ++begin)
+		        addNumber(*begin);
+        }
         const std::vector<int>& getVector() const;    
 
         class CanNoLongerBeSavedException : public std::exception {

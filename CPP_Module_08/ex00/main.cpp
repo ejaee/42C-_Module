@@ -1,3 +1,7 @@
+#include <iostream>
+#include <list>
+#include <deque>
+#include <vector>
 #include "easyfind.hpp"
 
 #define MAX 10

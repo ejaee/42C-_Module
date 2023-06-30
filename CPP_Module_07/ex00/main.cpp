@@ -1,12 +1,15 @@
 #include "whatever.hpp"
 #include <iostream>
 
-int main() {
-    std::string nextStep;
-
-    std::cout << YELLOW << "\n[ Press any key to run the test 1 ]\n" << std::endl << RESET;
+void waitForTest(std::string nextStep) {
+    std::cout << YELLOW << "\n[ Press any key to run the test ]\n" << std::endl << RESET;
     std::cin >> nextStep;
+}
 
+int main() {
+
+    std::cout << YELLOW << "Call template<int>\n" << std::endl << RESET;
+    waitForTest("");
     int a = 2;
     int b = 3;
     ::swap( a, b );
@@ -14,9 +17,8 @@ int main() {
     std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
     std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
 
-    std::cout << YELLOW << "\n[ Press any key to run the test 2 ]\n" << std::endl << RESET;
-    std::cin >> nextStep;
-
+    std::cout << YELLOW << "Call template<string>\n" << std::endl << RESET;
+    waitForTest("");
     std::string c = "chaine1";
     std::string d = "chaine2";
     ::swap(c, d);

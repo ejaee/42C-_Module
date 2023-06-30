@@ -7,11 +7,7 @@
 # define BLUE   "\033[0;34m"
 # define RESET  "\033[0m"
 
-#include <iostream>
 #include <algorithm>
-#include <list>
-#include <deque>
-#include <vector>
 
 template <typename T>
 typename T::iterator easyfind(T& container, int value) {

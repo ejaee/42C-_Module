@@ -2,6 +2,11 @@
 
 #define MAX 10
 
+void    waitForTest(std::string nextStep) {
+    std::cout << YELLOW << "\n[ Press any key to run the test ]\n" << std::endl << RESET;
+    std::cin >> nextStep;
+}
+
 void CompareTwoStringValues(int* s1, Array<int> s2) {
     for (int idx = 0; idx < MAX; idx++) {
             if (s1[idx] != s2[idx])
@@ -10,37 +15,32 @@ void CompareTwoStringValues(int* s1, Array<int> s2) {
         std::cout << GREEN << "It worked fine." << std::endl << RESET;
 }
 
-void    waitForTest(std::string nextStep) {
-    std::cout << YELLOW << "\n[ Press any key to run the test ]\n" << std::endl << RESET;
-    std::cin >> nextStep;
-}
-
 int main() {
     srand(time(NULL));
-    std::string nextStep;
     int* arr = new int[MAX];
     Array<int> userArr(MAX);
     
     std::cout << GREEN << "---- Generate a random number and store it in an array ----" << std::endl << RESET;
-    waitForTest(nextStep);
+    waitForTest("");
     for (int idx = 0; idx < MAX; idx++) {
-        const int randomValue = rand();
+        const int randomValue = rand() % MAX + 1;
         std::cout << "[" << idx << "] saved number: " << randomValue << std::endl;
         arr[idx] = randomValue;
         userArr[idx] = randomValue;
     }
-    std::cout << GREEN << "---- Saving the string is complete! ----" << std::endl << RESET;
+    
     Array<int> copyArr(userArr);
     Array<int> operatorArr = userArr;
     
+    std::cout << GREEN << "---- Saving the string is complete! ----" << std::endl << RESET;
 
     try {
         std::cout << YELLOW << "---- Are the values stored in the two strings the same? ----" << std::endl << RESET;
-        waitForTest(nextStep);
+        waitForTest("");
         CompareTwoStringValues(arr, userArr);
-        waitForTest(nextStep);
+        waitForTest("");
         CompareTwoStringValues(arr, copyArr);
-        waitForTest(nextStep);
+        waitForTest("");
         CompareTwoStringValues(arr, operatorArr);
 
     } catch (const std::exception& e) {
@@ -49,7 +49,7 @@ int main() {
 
     try {
         std::cout << YELLOW << "---- Does it output an error message if the index is out of range? ----" << std::endl << RESET;
-        waitForTest(nextStep);
+        waitForTest("");
         userArr[-1] = 1;
 
     } catch (const std::exception& e) {

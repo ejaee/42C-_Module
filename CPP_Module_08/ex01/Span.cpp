@@ -28,17 +28,6 @@ void    Span::addNumber(int num) {
     _intVector.push_back(num);
 }
 
-void    Span::addNumbersAsManyAs(int num) {
-    for (int idx = 0; idx < num; idx++) {
-        int n = rand() / 10000000;
-        try {
-            addNumber(n);
-            std::cout << "vector [" << idx << "]: " << n << std::endl;
-        } catch (std::exception &e) { 
-        }
-    }
-}
-
 std::vector<int> Span::sortVector() const {
     std::vector<int> sorted(_intVector);
     std::sort(sorted.begin(), sorted.end());
