@@ -14,11 +14,11 @@ class Form;
 
 class Bureaucrat {
     private:
-        const std::string m_name;
-        int m_grade;
+        const   std::string m_name;
+        int     m_grade;
         
-    public:
         Bureaucrat();
+    public:
         Bureaucrat(std::string name, int grade);
         Bureaucrat(const Bureaucrat& b);
         Bureaucrat& operator=(const Bureaucrat& b);

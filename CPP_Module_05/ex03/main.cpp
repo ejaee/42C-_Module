@@ -7,6 +7,11 @@
 #define FORM_2 "RobotomyRequestForm"
 #define FORM_3 "PresidentialPardonForm"
 
+void waitForTest(std::string nextStep) {
+    std::cout << YELLOW << "\n[ Press any key to run the test ]\n" << std::endl << RESET;
+    std::cin >> nextStep;
+}
+
 void    leaksChecker() {
     system("leaks ex03");
 }

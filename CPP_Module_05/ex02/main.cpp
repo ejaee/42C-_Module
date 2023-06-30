@@ -2,6 +2,11 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
+void waitForTest(std::string nextStep) {
+    std::cout << YELLOW << "\n[ Press any key to run the test ]\n" << std::endl << RESET;
+    std::cin >> nextStep;
+}
+
 int main() {
     Bureaucrat ceo("CEO", 1);
     Bureaucrat staff("Staff", 150);
@@ -22,6 +27,7 @@ int main() {
     */
 
     std::cout << YELLOW << "\n[ Test 1: Staff tries to sign the Form ]\n" << RESET;
+    waitForTest("");
     try {
         AForm *basic = new ShrubberyCreationForm("tree");
         std::cout << *basic << std::endl;
@@ -36,9 +42,9 @@ int main() {
     } catch (const std::exception& e) {
         std::cerr << RED << e.what() << RESET;
     }
-    std::cout << YELLOW << "--------------------------------\n" << RESET << std::endl;
 
     std::cout << YELLOW << "\n[ Test 2: ceo tries to sign the Form ]\n" << RESET;
+    waitForTest("");
     try {
         AForm *basic = new ShrubberyCreationForm("tree");
         std::cout << *basic << std::endl;
@@ -57,6 +63,5 @@ int main() {
     } catch (const std::exception& e) {
         std::cerr << RED << e.what() << RESET;
     }
-    std::cout << YELLOW << "--------------------------------\n" << RESET << std::endl;
 
 }

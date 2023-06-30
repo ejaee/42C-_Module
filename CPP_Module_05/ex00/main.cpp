@@ -1,5 +1,10 @@
 #include "Bureaucrat.hpp"
 
+void waitForTest(std::string nextStep) {
+    std::cout << YELLOW << "\n[ Press any key to run the test ]\n" << std::endl << RESET;
+    std::cin >> nextStep;
+}
+
 int main() {
 
     try {
@@ -10,7 +15,7 @@ int main() {
         std::cout << e.what();
     }
 
-    std::cout << std::endl;
+    waitForTest("");
 
     try {
         Bureaucrat use("User", 100);
@@ -20,7 +25,7 @@ int main() {
         std::cout << e.what();
     }
 
-    std::cout << std::endl;
+    waitForTest("");
 
     try {
         Bureaucrat over("Over_user", 0);
@@ -30,7 +35,7 @@ int main() {
         std::cout << RED << e.what() << RESET;
     }
 
-    std::cout << std::endl;
+    waitForTest("");
 
     try {
         Bureaucrat under("Under_user", 151);
@@ -40,6 +45,8 @@ int main() {
         std::cout << RED << e.what() << RESET;
     }
 
+    waitForTest("");
+
     try {
         Bureaucrat up("up_user", 1);
         std::cout << up;
@@ -48,7 +55,7 @@ int main() {
         std::cout << RED << e.what() << RESET;
     }
 
-    std::cout << std::endl;
+    waitForTest("");
 
     try {
         Bureaucrat down("down_user", 150);
