@@ -1,8 +1,6 @@
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter() {
-
-}
+ScalarConverter::ScalarConverter() {}
 
 ScalarConverter::ScalarConverter(const ScalarConverter& ref) {
     *this = ref;
@@ -13,9 +11,7 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& ref) {
     return *this;
 }
 
-ScalarConverter::~ScalarConverter() {
-
-}
+ScalarConverter::~ScalarConverter() {}
 
 void    ScalarConverter::convert(const std::string& input) {
     double  inputValue;
@@ -31,6 +27,11 @@ void    ScalarConverter::convert(const std::string& input) {
     } catch (...) {
         std::cout << RED << "Error: Convert Failure" << RESET << std::endl;
     }
+}
+
+void    ScalarConverter::CheckConvertable(char *pos) {
+    if ((*pos) && *pos != 'f')
+        throw std::bad_alloc();
 }
 
 void    ScalarConverter::convertToChar(std::string input, double inputValue) {
@@ -94,9 +95,4 @@ bool    ScalarConverter::checkValidValue(std::string input) {
     } else {
         return true;
     }
-}
-
-void    ScalarConverter::CheckConvertable(char *pos) {
-    if ((*pos) && *pos != 'f')
-        throw std::bad_alloc();
 }

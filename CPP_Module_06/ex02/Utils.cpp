@@ -22,13 +22,19 @@ void identify(Base* p)
 {
 	if (dynamic_cast<A*>(p))
 		std::cout << RED << "Pointer A" << std::endl << RESET;
-	if (dynamic_cast<B*>(p))
+	else if (dynamic_cast<B*>(p))
 		std::cout << YELLOW << "Pointer B" << std::endl << RESET;
-	if (dynamic_cast<C*>(p))
+	else if (dynamic_cast<C*>(p))
 		std::cout << BLUE << "Pointer C" << std::endl << RESET;
 }
 
 void identify(Base &p) {
+    // if (dynamic_cast<A&>(p)) 
+    //     std::cout << RED << "A\n" << RESET;
+    // else if (dynamic_cast<B&>(p))
+    //     std::cout << RED << "B\n" << RESET;
+    // else if (dynamic_cast<C&>(p))
+    //     std::cout << RED << "C\n" << RESET;
     try {
         A& a = dynamic_cast<A&>(p);
         std::cout << RED << "A\n" << RESET;
