@@ -12,6 +12,7 @@
 
 class Span {
     private:
+        unsigned int _N;
         std::vector<int> _intVector;
         std::vector<int> sortVector() const;
 
@@ -35,7 +36,25 @@ class Span {
 	        for (; begin != end; ++begin)
 		        addNumber(*begin);
         }
+
+        template<typename T>
+        void    addManyNumbers(typename T::const_iterator begin, typename T::const_iterator end)
+        {
+            if (std::distance(begin, end) < 0)
+                throw BadRangeException();
+            if (std::distance(begin, end) > static_cast<int>(_intVector.capacity() - _intVector.size()))
+                throw  CanNoLongerBeSavedException();
+            
+            for (typename T::const_iterator iter = begin; iter != end; iter++)
+                _intVector.push_back(*iter);
+        }
+
         const std::vector<int>& getVector() const;    
+
+        class BadRangeException : public std::exception {
+            public:
+                const char* what() const throw();
+        };
 
         class CanNoLongerBeSavedException : public std::exception {
             public:

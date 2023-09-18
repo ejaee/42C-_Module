@@ -14,7 +14,7 @@ typename T::iterator easyfind(T& container, int value) {
     typename T::iterator iter = std::find(container.begin(), container.end(), value);
     if (iter == container.end())
         throw std::runtime_error("Fail: Value not found...");
-    std::cout << GREEN << "Success: Value found!" << std::endl << RESET;
+    std::cout << GREEN << "Success: Value found on Index " << RESET << std::distance(std::begin(container), iter) << std::endl;
     return iter;
 }
 

@@ -3,6 +3,7 @@
 Span::Span() {};
 
 Span::Span(const unsigned int N) {
+    _N = N;
     _intVector.reserve(N);
 };
 
@@ -60,6 +61,10 @@ int Span::longestSpan() {
 
 const std::vector<int>& Span::getVector() const {
     return _intVector;
+}
+
+const char* Span::BadRangeException::what() const throw() {
+    return "Unvalid Range";
 }
 
 const char* Span::CanNoLongerBeSavedException::what() const throw() {
