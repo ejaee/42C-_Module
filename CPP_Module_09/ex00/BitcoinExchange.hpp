@@ -29,13 +29,23 @@ class BitcoinExchange {
         BitcoinExchange& operator=(const BitcoinExchange& ref);
         ~BitcoinExchange();
 
+        /******************************************************************/
+
         void    run(const char* path);
+
+        /******************************************************************/
+
         void    validateInputFile(std::ifstream& db);
         void    validateSeparator(std::istream& is, std::string separator);
         void    validateDate(int year, int month, int day);
-        void    validatePrice(int price, bool flag);
+        void    validatePrice(double price, bool flag);
+        
+        /******************************************************************/
+
         std::map<std::string, double>    setBitcoinData(std::ifstream& db, std::string separator);
         void    searchBitcoin(std::ifstream& db, std::string separator);
+
+        /******************************************************************/
 
         const std::map<std::string, double>&    getData() const;
 
@@ -51,7 +61,7 @@ class BitcoinExchange {
             public:
                 const char* what() const throw();
         };
-        class toLargePriceException : public std::exception {
+        class TooLargePriceException : public std::exception {
             public:
                 const char* what() const throw();
         };
